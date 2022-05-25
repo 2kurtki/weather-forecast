@@ -1,0 +1,36 @@
+@mixin box-sizing($property) {
+	-webkit-box-sizing: $property;
+	-moz-box-sizing: $property;
+	box-sizing: $property;
+}
+
+html {
+	font-weight: 500;
+	font-family: "Noto Sans", sans-serif;
+}
+
+body {
+	margin: 0;
+	line-height: 1.6;
+}
+
+*,
+*:before,
+*:after {
+	@include box-sizing(border-box);
+}
+
+button {
+	padding: 0;
+	background: none;
+	border: none;
+	outline: none;
+	cursor: pointer;
+
+	color: inherit;
+	font: inherit;
+}
+
+p {
+	margin: 0;
+}

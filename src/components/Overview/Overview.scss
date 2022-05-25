@@ -1,0 +1,30 @@
+%central-positioning {
+	display: flex;
+	justify-content: center;
+}
+
+.overview {
+	display: flex;
+	flex-direction: column;
+}
+
+.location {
+	@extend %central-positioning;
+	font-size: 2rem;
+}
+
+.assessment {
+	@extend %central-positioning;
+	font-size: 1.5rem;
+}
+
+.addInfoWrapper {
+	display: flex;
+	justify-content: space-between;
+}
+
+.additionalInfo {
+	padding: 0 0.5em;
+	font-size: 1rem;
+	font-weight: 300;
+}
