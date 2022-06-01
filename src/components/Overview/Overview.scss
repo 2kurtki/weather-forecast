@@ -13,7 +13,25 @@
 	font-size: 2rem;
 }
 
-.assessment {
+.mainInfo {
+	display: flex;
+	justify-content: center;
+}
+
+.temp {
+	font-size: 98px;
+	margin: 12px 6px;
+	line-height: 1;
+}
+
+.icon {
+	width: 98px;
+	height: 98px;
+	margin: 0 6px;
+	align-self: center;
+}
+
+.conditions {
 	@extend %central-positioning;
 	font-size: 1.5rem;
 }

@@ -1,9 +1,9 @@
 const path = require('path');
 const HTMLWebpackPlugin = require('html-webpack-plugin');
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const Dotenv = require('dotenv-webpack');
 
 module.exports = (env) => {
-    
     const isDev = env.dev;
 
     const cssLoader = (extraLoader) => {
@@ -36,7 +36,6 @@ module.exports = (env) => {
             clean: true
         },
         devServer: {
-            open: true,
             hot: true
         },
         // devtool: isDev ? '' : '',
@@ -65,7 +64,8 @@ module.exports = (env) => {
                     collapseWhitespace: !isDev,
                 }
             }),
-            new MiniCssExtractPlugin()
+            new MiniCssExtractPlugin(),
+            new Dotenv()
         ],
     }   
 };

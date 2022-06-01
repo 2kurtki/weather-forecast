@@ -9,7 +9,8 @@
     },
     "env": {
         "browser": true,
-        "es2022": true
+        "es2022": true,
+        "node": true
     },
     "extends": [
         "eslint:recommended",
@@ -22,7 +23,8 @@
         "react"
     ],
     "rules": {
-        "no-var": "error"
+        "no-var": "error",
+        "react/jsx-no-comment-textnodes": "off"
     },
     "settings": {
         "react": {
