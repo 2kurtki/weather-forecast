@@ -1,0 +1,13 @@
+.wrapper {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+
+	font-size: 32px;
+	line-height: 1;
+	margin: 10px 0;
+}
+
+.disabled {
+	color: rgba(255, 255, 255, 0.44);
+}

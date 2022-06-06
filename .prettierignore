@@ -1,5 +1,6 @@
 dist
 public
+.env
 webpack.config.js
 *.html
 /*.json

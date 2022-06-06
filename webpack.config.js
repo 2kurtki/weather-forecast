@@ -28,7 +28,7 @@ module.exports = (env) => {
         target: 'web',
         mode: isDev ? 'development' : 'production',
         entry: {
-            bundle: './src/index.js'
+            bundle: './src/index.jsx'
         },
         output: {
             filename: 'bundle.js',

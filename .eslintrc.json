@@ -24,7 +24,9 @@
     ],
     "rules": {
         "no-var": "error",
-        "react/jsx-no-comment-textnodes": "off"
+        "react/prop-types": "off",
+        "react/jsx-no-comment-textnodes": "off",
+        "react/jsx-filename-extension": ["warn", { "allow": "as-needed" }]
     },
     "settings": {
         "react": {

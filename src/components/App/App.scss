@@ -1,13 +1,11 @@
 .app {
-	height: 100vh;
+	min-height: 100vh;
 	background: linear-gradient(180deg, #73a2db 0%, #4474ac 81.25%);
-	display: flex;
-	flex-direction: column;
-	color: white;
 }
 
-.overviewWrapper {
-	margin-top: 15vh;
+.wrapper {
 	display: flex;
-	justify-content: center;
+	flex-direction: column;
+	align-items: center;
+	color: white;
 }

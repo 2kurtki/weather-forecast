@@ -3,14 +3,17 @@
 	justify-content: center;
 }
 
-.overview {
+.wrapper {
 	display: flex;
 	flex-direction: column;
+	margin: 0 auto;
+	margin-top: 15vh;
 }
 
 .location {
 	@extend %central-positioning;
 	font-size: 2rem;
+	margin-bottom: 10px;
 }
 
 .mainInfo {
@@ -20,29 +23,31 @@
 
 .temp {
 	font-size: 98px;
-	margin: 12px 6px;
+	margin-right: 16px;
 	line-height: 1;
 }
 
 .icon {
 	width: 98px;
 	height: 98px;
-	margin: 0 6px;
+	margin-right: 8px;
 	align-self: center;
 }
 
 .conditions {
 	@extend %central-positioning;
 	font-size: 1.5rem;
+	margin-top: 16px;
 }
 
 .addInfoWrapper {
 	display: flex;
 	justify-content: space-between;
+	margin-top: 2px;
 }
 
 .additionalInfo {
-	padding: 0 0.5em;
+	padding: 0 0.5rem;
 	font-size: 1rem;
 	font-weight: 300;
 }
