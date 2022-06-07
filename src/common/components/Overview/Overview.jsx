@@ -1,7 +1,9 @@
 import UnitsSwitcher from "../UnitsSwitcher/UnitsSwitcher.jsx";
+import { useSelector } from "react-redux";
 import styles from "./Overview.scss";
 
-function Overview({ forecastData, unitGroup, setUnitGroup }) {
+function Overview({ forecastData }) {
+	const unitGroup = useSelector((state) => state.unitGroup.value);
 	const currentDay = forecastData.days[0];
 	const { temp, humidity, windspeed, conditions, feelslike, icon } = currentDay;
 
@@ -16,7 +18,7 @@ function Overview({ forecastData, unitGroup, setUnitGroup }) {
 			<div className={styles.mainInfo}>
 				<img src={FULL_ICON_URL} className={styles.icon}></img>
 				<p className={styles.temp}>{Math.round(temp)}°</p>
-				<UnitsSwitcher unitGroup={unitGroup} setUnitGroup={setUnitGroup} />
+				<UnitsSwitcher />
 			</div>
 			<div className={styles.conditions}>
 				<p>{conditions}</p>

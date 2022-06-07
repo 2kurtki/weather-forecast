@@ -1,11 +1,12 @@
 import { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
 
 function useForecastData() {
 	const [data, setData] = useState(null);
 	const [error, setError] = useState(null);
 	const [isLoading, setIsLoading] = useState(true);
 
-	const [unitGroup, setUnitGroup] = useState("metric");
+	const unitGroup = useSelector((state) => state.unitGroup.value);
 	const API_URL = `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/Moscow?unitGroup=${unitGroup}&iconSet=icons2&key=${process.env.API_KEY}`;
 
 	useEffect(() => {
@@ -31,7 +32,7 @@ function useForecastData() {
 		getData();
 	}, [API_URL]);
 
-	return [data, error, isLoading, unitGroup, setUnitGroup];
+	return [data, error, isLoading];
 }
 
 export default useForecastData;

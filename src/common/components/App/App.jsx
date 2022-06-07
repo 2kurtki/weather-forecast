@@ -4,17 +4,13 @@ import useForecastData from "../../hooks/useForecastData.js";
 import styles from "./App.scss";
 
 function App() {
-	const [forecastData, error, isLoading, unitGroup, setUnitGroup] = useForecastData();
+	const [forecastData, error, isLoading] = useForecastData();
 
 	return (
 		<div className={styles.app}>
 			{!isLoading && !error && (
 				<div className={styles.wrapper}>
-					<Overview
-						forecastData={forecastData}
-						unitGroup={unitGroup}
-						setUnitGroup={setUnitGroup}
-					/>
+					<Overview forecastData={forecastData} />
 					<WeeklySummaryBar forecastData={forecastData} />
 				</div>
 			)}
