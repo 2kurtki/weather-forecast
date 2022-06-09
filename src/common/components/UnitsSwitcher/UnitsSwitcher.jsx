@@ -1,9 +1,9 @@
 import styles from "./UnitsSwitcher.scss";
 import { useSelector, useDispatch } from "react-redux";
-import { changeUnits } from "../../../features/unitGroup/unitGroupSlice.js";
+import { changeUnits, selectUnitGroup } from "../../../features/unitGroupSlice.js";
 
 function UnitsSwitcher() {
-	const unitGroup = useSelector((state) => state.unitGroup.value);
+	const unitGroup = useSelector(selectUnitGroup);
 	const dispatch = useDispatch();
 	const isMetricGroup = unitGroup === "metric";
 

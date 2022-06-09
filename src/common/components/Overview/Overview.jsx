@@ -1,9 +1,12 @@
 import UnitsSwitcher from "../UnitsSwitcher/UnitsSwitcher.jsx";
 import { useSelector } from "react-redux";
+import { selectUnitGroup } from "../../../features/unitGroupSlice.js";
 import styles from "./Overview.scss";
 
-function Overview({ forecastData }) {
-	const unitGroup = useSelector((state) => state.unitGroup.value);
+function Overview() {
+	const unitGroup = useSelector(selectUnitGroup);
+	const forecastData = useSelector((state) => state.forecastData.data);
+
 	const currentDay = forecastData.days[0];
 	const { temp, humidity, windspeed, conditions, feelslike, icon } = currentDay;
 

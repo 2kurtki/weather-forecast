@@ -38,7 +38,7 @@ module.exports = (env) => {
         devServer: {
             hot: true
         },
-        // devtool: isDev ? '' : '',
+        devtool: isDev ? 'eval-source-map' : 'source-map	',
         module: {
             rules: [
                 {
