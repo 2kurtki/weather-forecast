@@ -7,8 +7,8 @@
     "start": "webpack serve --env dev",
     "dev": "webpack --env dev",
     "build": "webpack --env prod",
-    "lint": "eslint src/**/*.js",
-    "lint-fix": "eslint src/**/*.js --fix"
+    "lint": "eslint src/**/*.{js,jsx}",
+    "lint-fix": "eslint src/**/*.{js,jsx} --fix"
   },
   "keywords": [
     "react",

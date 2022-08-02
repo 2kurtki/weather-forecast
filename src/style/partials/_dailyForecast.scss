@@ -1,0 +1,26 @@
+.title {
+	display: flex;
+	justify-content: center;
+	font-size: 1.3rem;
+	margin-bottom: 14px;
+}
+
+.iconWrapper {
+	width: 80px;
+	height: 80px;
+	margin: 0 10px;
+
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+}
+
+.temp {
+	display: flex;
+	justify-content: center;
+
+	font-size: 46px;
+	line-height: 1;
+	margin: 0 8px;
+	margin-bottom: 8px;
+}

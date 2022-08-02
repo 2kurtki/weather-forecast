@@ -1,6 +1,6 @@
 import styles from "./UnitsSwitcher.scss";
 import { useSelector, useDispatch } from "react-redux";
-import { changeUnits, selectUnitGroup } from "../../../features/unitGroupSlice.js";
+import { changeUnits, selectUnitGroup } from "Features/unitGroupSlice.js";
 
 function UnitsSwitcher() {
 	const unitGroup = useSelector(selectUnitGroup);

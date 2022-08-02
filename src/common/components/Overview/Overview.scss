@@ -3,7 +3,7 @@
 	justify-content: center;
 }
 
-.wrapper {
+.container {
 	display: flex;
 	flex-direction: column;
 	margin: 0 auto;
@@ -27,27 +27,29 @@
 	line-height: 1;
 }
 
-.icon {
+.iconWrapper {
 	width: 98px;
 	height: 98px;
-	margin-right: 8px;
-	align-self: center;
+	margin-right: 16px;
+
+	@extend %central-positioning;
+	flex-direction: column;
 }
 
-.conditions {
+.description {
 	@extend %central-positioning;
 	font-size: 1.5rem;
-	margin-top: 16px;
-}
-
-.addInfoWrapper {
-	display: flex;
-	justify-content: space-between;
-	margin-top: 2px;
+	margin-top: 8px;
 }
 
 .additionalInfo {
-	padding: 0 0.5rem;
+	display: flex;
+	justify-content: center;
+	margin-top: 2px;
+}
+
+.addInfoWrapper {
+	margin: 0 1rem;
 	font-size: 1rem;
 	font-weight: 300;
 }

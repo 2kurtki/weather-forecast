@@ -1,5 +1,5 @@
 import Overview from "../Overview/Overview.jsx";
-import WeeklySummaryBar from "../WeeklySummaryBar/WeeklySummaryBar.jsx";
+import WeeklySummaryBar from "../WeekNavigation/WeeklyNavigationBar/WeeklySummaryBar.jsx";
 import { fetchForecastData } from "../../../features/forecastDataSlice.js";
 import { selectUnitGroup } from "../../../features/unitGroupSlice.js";
 import { useSelector, useDispatch } from "react-redux";

@@ -2,38 +2,50 @@ import UnitsSwitcher from "../UnitsSwitcher/UnitsSwitcher.jsx";
 import { useSelector } from "react-redux";
 import { selectUnitGroup } from "../../../features/unitGroupSlice.js";
 import styles from "./Overview.scss";
+import WeatherIcon from "../WeatherIcon/WeatherIcon.jsx";
 
 function Overview() {
 	const unitGroup = useSelector(selectUnitGroup);
 	const forecastData = useSelector((state) => state.forecastData.data);
+	const selectedDayNum = useSelector((state) => state.selectedDay.number);
 
-	const currentDay = forecastData.days[0];
-	const { temp, humidity, windspeed, conditions, feelslike, icon } = currentDay;
+	const selectedDayData = forecastData.days[selectedDayNum];
+	const { temp, humidity, windspeed, description, feelslike, icon } = selectedDayData;
 
 	const speedUnits = unitGroup === "metric" ? "km/h" : "mi/h";
-	const FULL_ICON_URL = process.env.ICON_URL + `${icon}.svg`;
 
 	return (
-		<div className={styles.wrapper}>
+		<div className={styles.container}>
 			<div className={styles.location}>
 				<p>{forecastData.address}</p>
 			</div>
+
 			<div className={styles.mainInfo}>
-				<img src={FULL_ICON_URL} className={styles.icon}></img>
-				<p className={styles.temp}>{Math.round(temp)}°</p>
+				<div className={styles.iconWrapper}>
+					<WeatherIcon iconName={icon} />
+				</div>
+				<div className={styles.temp}>
+					<p>{Math.round(temp)}°</p>
+				</div>
 				<UnitsSwitcher />
 			</div>
-			<div className={styles.conditions}>
-				<p>{conditions}</p>
+
+			<div className={styles.description}>
+				<p>{description}</p>
 			</div>
-			<div className={styles.addInfoWrapper}>
-				<p className={styles.additionalInfo}>
-					Feels like {Math.round(feelslike)}°
-				</p>
-				<p className={styles.additionalInfo}>
-					Wind {Math.round(windspeed)} {speedUnits}
-				</p>
-				<p className={styles.additionalInfo}>Humidity {Math.round(humidity)}%</p>
+
+			<div className={styles.additionalInfo}>
+				<div className={styles.addInfoWrapper}>
+					<p>Feels like {Math.round(feelslike)}°</p>
+				</div>
+				<div className={styles.addInfoWrapper}>
+					<p>
+						Wind {Math.round(windspeed)} {speedUnits}
+					</p>
+				</div>
+				<div className={styles.addInfoWrapper}>
+					<p>Humidity {Math.round(humidity)}%</p>
+				</div>
 			</div>
 		</div>
 	);

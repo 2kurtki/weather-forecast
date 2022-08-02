@@ -38,7 +38,13 @@ module.exports = (env) => {
         devServer: {
             hot: true
         },
-        devtool: isDev ? 'eval-source-map' : 'source-map	',
+        resolve: {
+            alias: {
+                Style: path.resolve(__dirname, './src/style'),
+                Features: path.resolve(__dirname, './src/features')
+            }
+        },
+        devtool: isDev ? 'eval-source-map' : 'source-map',
         module: {
             rules: [
                 {
