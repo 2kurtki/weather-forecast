@@ -1,0 +1,8 @@
+.container {
+	display: flex;
+	white-space: pre;
+
+	& p {
+		transition: 2s;
+	}
+}

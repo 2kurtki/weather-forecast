@@ -5,45 +5,36 @@
 	flex-direction: column;
 
 	width: 17%;
-	padding: 28px 0;
+	padding: 28px 20px;
 
 	background: rgba(255, 255, 255, 0.04);
 	box-shadow: 0px 4px 50px 10px rgba(0, 0, 0, 0.1);
 	border-radius: 17px;
 
 	cursor: pointer;
+	white-space: nowrap;
+	overflow: hidden;
 	transition: 1s;
 
 	&.selected {
 		width: 28%;
-		justify-content: center;
-		flex-direction: row;
 	}
 }
 
 .content {
 	display: flex;
-	justify-content: center;
+	justify-content: space-between;
+}
 
-	&.selected {
-		flex-direction: column;
-		justify-content: space-between;
-		margin: 0 10px;
-	}
+.indicators {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-end;
 }
 
 .humidity {
 	display: flex;
-	justify-content: center;
+	justify-content: flex-end;
 
 	font-weight: 300;
-	transition: 2s;
 }
-
-// .inner {
-// 	transition: 0.5s;
-// }
-
-// .transparent {
-// 	opacity: 0;
-// }
