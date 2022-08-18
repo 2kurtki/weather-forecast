@@ -1,5 +1,3 @@
-@use "Style/partials/dailyForecast";
-
 .container {
 	display: flex;
 	flex-direction: column;
@@ -18,12 +16,54 @@
 
 	&.selected {
 		width: 28%;
+		padding: 28px 24px;
+	}
+}
+
+.title {
+	display: flex;
+	justify-content: center;
+
+	font-size: 1.3rem;
+	margin-bottom: 14px;
+}
+
+.date {
+	display: inline-block;
+	flex-grow: 0;
+
+	transition: 1s;
+
+	&.selected {
+		flex-grow: 1;
+	}
+}
+
+.conditions {
+	display: inline-block;
+	flex-grow: 0;
+	font-size: 0;
+	opacity: 0;
+
+	&.selected {
+		transition: font-size 100ms 0.8s, opacity 0.5s 1s;
+		font-size: inherit;
+		opacity: 1;
 	}
 }
 
 .content {
 	display: flex;
 	justify-content: space-between;
+}
+
+.iconWrapper {
+	width: 80px;
+	height: 80px;
+
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
 }
 
 .indicators {
@@ -37,4 +77,23 @@
 	justify-content: flex-end;
 
 	font-weight: 300;
+	font-size: 0;
+	opacity: 0;
+
+	transition: font-size 1ms 100ms, opacity 100ms;
+
+	&.selected {
+		transition: font-size 100ms 0.8s, opacity 0.5s 1s;
+		font-size: 1rem;
+		opacity: 1;
+	}
+}
+
+.temp {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+
+	font-size: 46px;
+	line-height: 1;
 }

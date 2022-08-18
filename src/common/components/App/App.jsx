@@ -18,7 +18,7 @@ function App() {
 	return (
 		<div className={styles.app}>
 			{status !== "failed" && data !== null && (
-				<div className={styles.wrapper}>
+				<div className={styles.container}>
 					<Overview />
 					<WeeklySummaryBar />
 				</div>

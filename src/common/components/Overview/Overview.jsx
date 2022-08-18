@@ -5,9 +5,9 @@ import styles from "./Overview.scss";
 import WeatherIcon from "../WeatherIcon/WeatherIcon.jsx";
 
 function Overview() {
-	const unitGroup = useSelector(selectUnitGroup);
 	const forecastData = useSelector((state) => state.forecastData.data);
 	const selectedDayNum = useSelector((state) => state.selectedDay.number);
+	const unitGroup = useSelector(selectUnitGroup);
 
 	const selectedDayData = forecastData.days[selectedDayNum];
 	const { temp, humidity, windspeed, description, feelslike, icon } = selectedDayData;
