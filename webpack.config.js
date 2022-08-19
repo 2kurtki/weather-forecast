@@ -2,6 +2,7 @@ const path = require('path');
 const HTMLWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const Dotenv = require('dotenv-webpack');
+const { getLocalIdent } = require('@dr.pogodin/babel-plugin-react-css-modules/utils');
 
 module.exports = (env) => {
     const isDev = env.dev;
@@ -13,7 +14,8 @@ module.exports = (env) => {
                 loader: 'css-loader',
                 options: {
                     modules: {
-                        localIdentName: "[path][name]__[local]--[hash:base64:5]",
+                        getLocalIdent,
+                        localIdentName: "[path][name]__[local]--[hash:base64:5]"
                     },
                 },
             }
@@ -34,9 +36,6 @@ module.exports = (env) => {
             filename: 'bundle.js',
             path: path.resolve(__dirname, './dist'),
             clean: true
-        },
-        devServer: {
-            hot: true
         },
         resolve: {
             alias: {

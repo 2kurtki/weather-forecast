@@ -1,6 +1,6 @@
 import DailyForecast from "../DailyForecast/DailyForecast.jsx";
 import { useSelector } from "react-redux";
-import styles from "./WeeklySummaryBar.scss";
+import "./WeeklySummaryBar.scss";
 
 function WeeklySummaryBar() {
 	const forecastData = useSelector((state) => state.forecastData.data);
@@ -13,7 +13,7 @@ function WeeklySummaryBar() {
 		return <DailyForecast dailyForecastData={dailyForecastData} dayNum={dayNum} key={dayId} />;
 	});
 
-	return <div className={styles.wrapper}>{dailyForecastList}</div>;
+	return <div styleName="wrapper">{dailyForecastList}</div>;
 }
 
 export default WeeklySummaryBar;
