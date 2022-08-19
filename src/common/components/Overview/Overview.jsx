@@ -1,7 +1,7 @@
 import UnitsSwitcher from "../UnitsSwitcher/UnitsSwitcher.jsx";
 import { useSelector } from "react-redux";
 import { selectUnitGroup } from "../../../features/unitGroupSlice.js";
-import styles from "./Overview.scss";
+import "./Overview.scss";
 import WeatherIcon from "../WeatherIcon/WeatherIcon.jsx";
 
 function Overview() {
@@ -15,35 +15,35 @@ function Overview() {
 	const speedUnits = unitGroup === "metric" ? "km/h" : "mi/h";
 
 	return (
-		<div className={styles.container}>
-			<div className={styles.location}>
+		<div styleName="container">
+			<div styleName="location">
 				<p>{forecastData.address}</p>
 			</div>
 
-			<div className={styles.mainInfo}>
-				<div className={styles.iconWrapper}>
+			<div styleName="mainInfo">
+				<div styleName="iconWrapper">
 					<WeatherIcon iconName={icon} />
 				</div>
-				<div className={styles.temp}>
+				<div styleName="temp">
 					<p>{Math.round(temp)}°</p>
 				</div>
 				<UnitsSwitcher />
 			</div>
 
-			<div className={styles.description}>
+			<div styleName="description">
 				<p>{description}</p>
 			</div>
 
-			<div className={styles.additionalInfo}>
-				<div className={styles.addInfoWrapper}>
+			<div styleName="additionalInfo">
+				<div styleName="addInfoWrapper">
 					<p>Feels like {Math.round(feelslike)}°</p>
 				</div>
-				<div className={styles.addInfoWrapper}>
+				<div styleName="addInfoWrapper">
 					<p>
 						Wind {Math.round(windspeed)} {speedUnits}
 					</p>
 				</div>
-				<div className={styles.addInfoWrapper}>
+				<div styleName="addInfoWrapper">
 					<p>Humidity {Math.round(humidity)}%</p>
 				</div>
 			</div>

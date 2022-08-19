@@ -1,9 +1,9 @@
 import Overview from "../Overview/Overview.jsx";
 import WeeklySummaryBar from "../WeekNavigation/WeeklyNavigationBar/WeeklySummaryBar.jsx";
+import "./App.scss";
 import { fetchForecastData } from "../../../features/forecastDataSlice.js";
 import { selectUnitGroup } from "../../../features/unitGroupSlice.js";
 import { useSelector, useDispatch } from "react-redux";
-import styles from "./App.scss";
 import { useEffect } from "react";
 
 function App() {
@@ -16,9 +16,9 @@ function App() {
 	}, [unitGroup, dispatch]);
 
 	return (
-		<div className={styles.app}>
+		<div styleName="app">
 			{status !== "failed" && data !== null && (
-				<div className={styles.container}>
+				<div styleName="container">
 					<Overview />
 					<WeeklySummaryBar />
 				</div>

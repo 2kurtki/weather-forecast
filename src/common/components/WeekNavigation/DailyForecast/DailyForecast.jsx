@@ -2,7 +2,7 @@ import DateDisplay from "../DateDisplay/DateDisplay.jsx";
 import WeatherIcon from "../../WeatherIcon/WeatherIcon.jsx";
 import { useSelector, useDispatch } from "react-redux";
 import { changeDay } from "Features/selectedDaySlice";
-import styles from "./DailyForecast.scss";
+import "./DailyForecast.scss";
 
 function DailyForecast({ dailyForecastData, dayNum }) {
 	const { temp, icon, datetime, conditions, humidity } = dailyForecastData;
@@ -11,34 +11,31 @@ function DailyForecast({ dailyForecastData, dayNum }) {
 	const selectedDayNum = useSelector((state) => state.selectedDay.number);
 	const isDaySelected = dayNum === selectedDayNum;
 
-	const containerClassName = `${styles.container} ${isDaySelected ? styles.selected : ""}`;
-	const dateClassName = `${styles.date} ${isDaySelected ? styles.selected : ""}`;
-	const conditionsClassName = `${styles.conditions} ${isDaySelected ? styles.selected : ""}`;
-	const humidityClassName = `${styles.humidity} ${isDaySelected ? styles.selected : ""}`;
+	const dayStyleStatus = isDaySelected ? " selected" : "";
 
 	return (
-		<div className={containerClassName} onClick={() => dispatch(changeDay(dayNum))}>
-			<div className={styles.title}>
-				<div className={dateClassName}>
+		<div styleName={"container" + dayStyleStatus} onClick={() => dispatch(changeDay(dayNum))}>
+			<div styleName="title">
+				<div styleName={"date" + dayStyleStatus}>
 					<DateDisplay datetime={datetime} showDateNumber={isDaySelected} />
 				</div>
 
-				<div className={conditionsClassName}>
+				<div styleName={"conditions" + dayStyleStatus}>
 					<p>{conditions}</p>
 				</div>
 			</div>
 
-			<div className={styles.content}>
-				<div className={styles.iconWrapper}>
+			<div styleName="content">
+				<div styleName="iconWrapper">
 					<WeatherIcon iconName={icon} />
 				</div>
 
-				<div className={styles.indicators}>
-					<div className={styles.temp}>
+				<div styleName="indicators">
+					<div styleName="temp">
 						<p>{Math.round(temp)}°</p>
 					</div>
 
-					<div className={humidityClassName}>
+					<div styleName={"humidity" + dayStyleStatus}>
 						<p>Humidity {Math.round(humidity)}%</p>
 					</div>
 				</div>

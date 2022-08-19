@@ -8,7 +8,7 @@
 	opacity: 0;
 	transition: font-size 1ms 100ms, opacity 100ms;
 
-	&.selected {
+	&.active {
 		transition: font-size 100ms 0.8s, opacity 0.5s 1s;
 		font-size: inherit;
 		opacity: 1;

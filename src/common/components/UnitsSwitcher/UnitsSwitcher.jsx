@@ -1,4 +1,4 @@
-import styles from "./UnitsSwitcher.scss";
+import "./UnitsSwitcher.scss";
 import { useSelector, useDispatch } from "react-redux";
 import { changeUnits, selectUnitGroup } from "Features/unitGroupSlice.js";
 
@@ -8,15 +8,15 @@ function UnitsSwitcher() {
 	const isMetricGroup = unitGroup === "metric";
 
 	return (
-		<div className={styles.wrapper}>
+		<div styleName="wrapper">
 			<button
 				onClick={() => dispatch(changeUnits("metric"))}
-				className={isMetricGroup ? "" : styles.disabled}>
+				styleName={!isMetricGroup && "disabled"}>
 				C
 			</button>
 			<button
 				onClick={() => dispatch(changeUnits("us"))}
-				className={isMetricGroup ? styles.disabled : ""}>
+				styleName={isMetricGroup && "disabled"}>
 				F
 			</button>
 		</div>

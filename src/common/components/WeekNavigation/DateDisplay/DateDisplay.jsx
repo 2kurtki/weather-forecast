@@ -1,4 +1,4 @@
-import styles from "./DateDisplay.scss";
+import "./DateDisplay.scss";
 
 function DateDisplay({ datetime, showDateNumber }) {
 	const date = new Date(datetime);
@@ -6,12 +6,13 @@ function DateDisplay({ datetime, showDateNumber }) {
 	const weekday = new Intl.DateTimeFormat("en-US", formatOptions).format(date);
 	const calendarDate = date.getDate();
 
-	const dateNumberClassName = `${styles.dateNumber} ${showDateNumber ? styles.selected : ""}`;
+	const dateStyleStatus = showDateNumber ? " active" : "";
 
 	return (
-		<div className={styles.container}>
+		<div styleName="container">
 			<p>{weekday}</p>
-			<p className={dateNumberClassName}>{" " + calendarDate}</p>
+			{/* <p styleName="dateNumber selected">{" " + calendarDate}</p> */}
+			<p styleName={"dateNumber" + dateStyleStatus}>{" " + calendarDate}</p>
 		</div>
 	);
 }
