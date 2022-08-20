@@ -6,10 +6,10 @@
 .dateNumber {
 	font-size: 0;
 	opacity: 0;
-	transition: font-size 1ms 100ms, opacity 100ms;
+	transition: font-size 1000ms 0.2s, opacity 0.2s;
 
 	&.active {
-		transition: font-size 100ms 0.8s, opacity 0.5s 1s;
+		transition: font-size 1000ms, opacity 0.5s 1s;
 		font-size: inherit;
 		opacity: 1;
 	}
