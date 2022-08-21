@@ -39,8 +39,8 @@ module.exports = (env) => {
         },
         resolve: {
             alias: {
-                Style: path.resolve(__dirname, './src/style'),
-                Features: path.resolve(__dirname, './src/features')
+                Assets: path.resolve(__dirname, './src/assets'),
+                Features: path.resolve(__dirname, './src/features'),
             }
         },
         devtool: isDev ? 'eval-source-map' : 'source-map',
@@ -58,7 +58,11 @@ module.exports = (env) => {
                     test: /\.(js|ts)x?$/,
                     exclude: /node_modules/,
                     use: 'babel-loader'
-                }
+                },
+                {
+                    test: /\.(png|svg|jpg|jpeg|gif)$/,
+                    type: 'asset/resource',
+                },
             ],
         },
         plugins: [
