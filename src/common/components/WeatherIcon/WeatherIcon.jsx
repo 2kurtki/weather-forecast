@@ -1,11 +1,15 @@
-import useImage from "../../hooks/useImage";
-import AltImage from "Assets/icons/cloudy.svg";
+import * as icons from "Assets/icons";
 
 function WeatherIcon({ iconName }) {
-	const { image, error } = useImage(`${iconName}.svg`);
-	const iconElement = error === null ? <img src={image} /> : <img src={AltImage}></img>;
+	const toCamelCase = (str) => {
+		return str.replace(/([-][a-z])/gi, (match) => {
+			return match.toUpperCase().replace("-", "");
+		});
+	};
 
-	return iconElement;
+	const camelIconName = toCamelCase(iconName);
+
+	return <img src={icons[camelIconName]} />;
 }
 
 export default WeatherIcon;
