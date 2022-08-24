@@ -1,9 +1,9 @@
 import "./UnitsSwitcher.scss";
 import { useSelector, useDispatch } from "react-redux";
-import { changeUnits, selectUnitGroup } from "Features/unitGroupSlice.js";
+import { changeUnits } from "Features/unitGroupSlice.js";
 
 function UnitsSwitcher() {
-	const unitGroup = useSelector(selectUnitGroup);
+	const unitGroup = useSelector((state) => state.unitGroup.value);
 	const dispatch = useDispatch();
 	const isMetricGroup = unitGroup === "metric";
 
@@ -23,4 +23,4 @@ function UnitsSwitcher() {
 	);
 }
 
-export default UnitsSwitcher;
+export { UnitsSwitcher };

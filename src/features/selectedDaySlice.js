@@ -12,5 +12,5 @@ const selectedDaySlice = createSlice({
 	},
 });
 
+export const selectedDayReducer = selectedDaySlice.reducer;
 export const { changeDay } = selectedDaySlice.actions;
-export default selectedDaySlice.reducer;

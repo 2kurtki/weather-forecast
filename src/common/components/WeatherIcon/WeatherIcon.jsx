@@ -12,4 +12,4 @@ function WeatherIcon({ iconName }) {
 	return <img src={icons[camelIconName]} />;
 }
 
-export default WeatherIcon;
+export { WeatherIcon };

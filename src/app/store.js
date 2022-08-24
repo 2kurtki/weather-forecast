@@ -1,9 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
-import unitGroupReducer from "Features/unitGroupSlice";
-import forecastDataReducer from "Features/forecastDataSlice.js";
-import selectedDayReducer from "Features/selectedDaySlice.js";
+import { unitGroupReducer, forecastDataReducer, selectedDayReducer } from "Features";
 
-export default configureStore({
+export const store = configureStore({
 	reducer: {
 		unitGroup: unitGroupReducer,
 		forecastData: forecastDataReducer,

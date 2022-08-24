@@ -11,10 +11,9 @@ function DateDisplay({ datetime, showDateNumber }) {
 	return (
 		<div styleName="container">
 			<p>{weekday}</p>
-			{/* <p styleName="dateNumber selected">{" " + calendarDate}</p> */}
 			<p styleName={"dateNumber" + dateStyleStatus}>{" " + calendarDate}</p>
 		</div>
 	);
 }
 
-export default DateDisplay;
+export { DateDisplay };

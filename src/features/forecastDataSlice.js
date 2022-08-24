@@ -44,4 +44,4 @@ const forecastDataSlice = createSlice({
 	},
 });
 
-export default forecastDataSlice.reducer;
+export const forecastDataReducer = forecastDataSlice.reducer;

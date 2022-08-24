@@ -12,6 +12,5 @@ const unitGroupSlice = createSlice({
 	},
 });
 
+export const unitGroupReducer = unitGroupSlice.reducer;
 export const { changeUnits } = unitGroupSlice.actions;
-export const selectUnitGroup = (state) => state.unitGroup.value;
-export default unitGroupSlice.reducer;

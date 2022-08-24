@@ -1,5 +1,5 @@
-import DateDisplay from "../DateDisplay/DateDisplay.jsx";
-import WeatherIcon from "../../WeatherIcon/WeatherIcon.jsx";
+import { DateDisplay } from "../DateDisplay";
+import { WeatherIcon } from "../../WeatherIcon";
 import { useSelector, useDispatch } from "react-redux";
 import { changeDay } from "Features/selectedDaySlice";
 import "./DailyForecast.scss";
@@ -44,4 +44,4 @@ function DailyForecast({ dailyForecastData, dayNum }) {
 	);
 }
 
-export default DailyForecast;
+export { DailyForecast };

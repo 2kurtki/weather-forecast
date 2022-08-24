@@ -1,13 +1,12 @@
-import UnitsSwitcher from "../UnitsSwitcher/UnitsSwitcher.jsx";
+import { UnitsSwitcher } from "../UnitsSwitcher";
 import { useSelector } from "react-redux";
-import { selectUnitGroup } from "Features/unitGroupSlice.js";
+import { WeatherIcon } from "../WeatherIcon";
 import "./Overview.scss";
-import WeatherIcon from "../WeatherIcon/WeatherIcon.jsx";
 
 function Overview() {
 	const forecastData = useSelector((state) => state.forecastData.data);
 	const selectedDayNum = useSelector((state) => state.selectedDay.number);
-	const unitGroup = useSelector(selectUnitGroup);
+	const unitGroup = useSelector((state) => state.unitGroup.value);
 
 	const selectedDayData = forecastData.days[selectedDayNum];
 	const { temp, humidity, windspeed, description, feelslike, icon } = selectedDayData;
@@ -51,4 +50,4 @@ function Overview() {
 	);
 }
 
-export default Overview;
+export { Overview };

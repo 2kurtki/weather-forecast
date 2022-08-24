@@ -1,14 +1,13 @@
-import Overview from "../Overview/Overview.jsx";
-import WeeklySummaryBar from "../WeekNavigation/WeeklyNavigationBar/WeeklySummaryBar.jsx";
-import "./App.scss";
-import { fetchForecastData } from "Features/forecastDataSlice.js";
-import { selectUnitGroup } from "Features/unitGroupSlice.js";
+import { Overview } from "../Overview";
+import { WeeklyNavigationBar } from "../WeekNavigation";
+import { fetchForecastData } from "Features/forecastDataSlice";
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
+import "./App.scss";
 
 function App() {
 	const dispatch = useDispatch();
-	const unitGroup = useSelector(selectUnitGroup);
+	const unitGroup = useSelector((state) => state.unitGroup.value);
 	const { data, status } = useSelector((state) => state.forecastData);
 
 	useEffect(() => {
@@ -20,11 +19,11 @@ function App() {
 			{status !== "failed" && data !== null && (
 				<div styleName="container">
 					<Overview />
-					<WeeklySummaryBar />
+					<WeeklyNavigationBar />
 				</div>
 			)}
 		</div>
 	);
 }
 
-export default App;
+export { App };
