@@ -1,6 +1,6 @@
 import UnitsSwitcher from "../UnitsSwitcher/UnitsSwitcher.jsx";
 import { useSelector } from "react-redux";
-import { selectUnitGroup } from "../../../features/unitGroupSlice.js";
+import { selectUnitGroup } from "Features/unitGroupSlice.js";
 import "./Overview.scss";
 import WeatherIcon from "../WeatherIcon/WeatherIcon.jsx";
 
