@@ -3,10 +3,23 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 export const fetchForecastData = createAsyncThunk(
 	"forecastData/fetchForecastData",
 	async (unitGroup, { rejectWithValue }) => {
-		const API_URL = `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/Moscow?unitGroup=${unitGroup}&iconSet=icons2&key=${process.env.API_KEY}`;
+		const url = new URL(
+			"/VisualCrossingWebServices/rest/services/timeline/Moscow",
+			"https://weather.visualcrossing.com"
+		);
+
+		const params = {
+			unitGroup: unitGroup,
+			iconSet: "icons2",
+			key: process.env.API_KEY,
+		};
+
+		for (let prop in params) {
+			url.searchParams.append(prop, params[prop]);
+		}
 
 		try {
-			const response = await fetch(API_URL);
+			const response = await fetch(url);
 
 			if (!response.ok) {
 				throw new Error(`HTTP error: The status is ${response.status}`);
