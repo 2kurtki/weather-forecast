@@ -2,9 +2,9 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
 export const fetchForecastData = createAsyncThunk(
 	"forecastData/fetchForecastData",
-	async (unitGroup, { rejectWithValue }) => {
+	async ({ unitGroup, location }, { rejectWithValue }) => {
 		const url = new URL(
-			"/VisualCrossingWebServices/rest/services/timeline/Moscow",
+			`/VisualCrossingWebServices/rest/services/timeline/${location}`,
 			"https://weather.visualcrossing.com"
 		);
 

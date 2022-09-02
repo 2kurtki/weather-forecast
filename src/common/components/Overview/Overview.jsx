@@ -1,6 +1,7 @@
 import { UnitsSwitcher } from "../UnitsSwitcher";
-import { useSelector } from "react-redux";
 import { WeatherIcon } from "../WeatherIcon";
+import { LocationSelector } from "../LocationSelector";
+import { useSelector } from "react-redux";
 import "./Overview.scss";
 
 function Overview() {
@@ -15,12 +16,12 @@ function Overview() {
 
 	return (
 		<div styleName="container">
-			<div styleName="location">
-				<p>{forecastData.address}</p>
+			<div styleName="locationWrapper">
+				<LocationSelector />
 			</div>
 
 			<div styleName="mainInfo">
-				<div styleName="iconWrapper">
+				<div styleName="weatherIconWrapper">
 					<WeatherIcon iconName={icon} />
 				</div>
 				<div styleName="temp">

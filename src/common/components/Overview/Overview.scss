@@ -10,8 +10,7 @@
 	margin-top: 15vh;
 }
 
-.location {
-	@extend %central-positioning;
+.locationWrapper {
 	font-size: 2rem;
 	margin-bottom: 10px;
 }
@@ -27,7 +26,7 @@
 	line-height: 1;
 }
 
-.iconWrapper {
+.weatherIconWrapper {
 	width: 98px;
 	height: 98px;
 	margin-right: 16px;

@@ -1,4 +1,4 @@
-import * as icons from "Assets/icons";
+import * as icons from "Assets/icons/weatherIcons";
 
 function WeatherIcon({ iconName }) {
 	const toCamelCase = (str) => {

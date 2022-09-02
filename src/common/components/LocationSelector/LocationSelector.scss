@@ -1,0 +1,25 @@
+.container {
+	position: relative;
+	text-align: center;
+}
+
+.locationName {
+	display: inline-block;
+}
+
+.penIcon {
+	position: absolute;
+	display: inline-block;
+	margin-left: 10px;
+
+	top: 50%;
+	transform: translateY(-50%);
+
+	font-size: 1.3rem;
+	cursor: pointer;
+	transition: 0.3s;
+
+	&:hover {
+		opacity: 0.6;
+	}
+}

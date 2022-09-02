@@ -8,11 +8,12 @@ import "./App.scss";
 function App() {
 	const dispatch = useDispatch();
 	const unitGroup = useSelector((state) => state.unitGroup.value);
+	const location = useSelector((state) => state.location.value);
 	const { data, status } = useSelector((state) => state.forecastData);
 
 	useEffect(() => {
-		dispatch(fetchForecastData(unitGroup));
-	}, [unitGroup, dispatch]);
+		dispatch(fetchForecastData({ unitGroup, location }));
+	}, [unitGroup, location, dispatch]);
 
 	return (
 		<div styleName="app">
