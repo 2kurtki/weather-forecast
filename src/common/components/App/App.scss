@@ -1,6 +1,8 @@
+@use "Styles/partials/colors" as *;
+
 .app {
 	min-height: 100vh;
-	background: linear-gradient(180deg, #73a2db 0%, #4474ac 81.25%);
+	background: linear-gradient(180deg, $primary-color 0%, $secondary-color 81.25%);
 }
 
 .container {

@@ -40,7 +40,8 @@ module.exports = (env) => {
         resolve: {
             alias: {
                 Assets: path.resolve(__dirname, './src/assets'),
-                Features: path.resolve(__dirname, './src/features')
+                Features: path.resolve(__dirname, './src/features'),
+                Styles: path.resolve(__dirname, './src/styles')
             }
         },
         devtool: isDev ? 'eval-source-map' : 'source-map',

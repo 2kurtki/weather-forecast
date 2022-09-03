@@ -3,7 +3,8 @@
     "baseUrl": ".",
     "paths": {
         "Assets/*": ["./src/assets/*"],
-        "Features/*": ["./src/features/*"]
+        "Features/*": ["./src/features/*"],
+        "Styles/*": ["./src/styles/*"]
     }
   },
   "exclude": ["node_modules", "dist", "public"] 
