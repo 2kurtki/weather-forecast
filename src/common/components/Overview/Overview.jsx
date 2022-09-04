@@ -16,9 +16,7 @@ function Overview() {
 
 	return (
 		<div styleName="container">
-			<div styleName="locationWrapper">
-				<LocationSelector />
-			</div>
+			<LocationSelector />
 
 			<div styleName="mainInfo">
 				<div styleName="weatherIconWrapper">

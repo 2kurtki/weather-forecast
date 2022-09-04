@@ -8,7 +8,7 @@ function UnitsSwitcher() {
 	const isMetricGroup = unitGroup === "metric";
 
 	return (
-		<div styleName="wrapper">
+		<div styleName="container">
 			<button
 				onClick={() => dispatch(changeUnits("metric"))}
 				styleName={!isMetricGroup && "disabled"}>

@@ -3,10 +3,9 @@
 .container {
 	position: relative;
 	text-align: center;
-}
 
-.locationName {
-	display: inline-block;
+	font-size: 2rem;
+	min-height: 60px;
 }
 
 .form {
@@ -65,4 +64,9 @@
 	&:hover {
 		opacity: 0.6;
 	}
+}
+
+.locationName {
+	display: inline-block;
+	line-height: 60px;
 }

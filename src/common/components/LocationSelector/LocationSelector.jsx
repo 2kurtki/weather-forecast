@@ -11,7 +11,7 @@ function LocationSelector() {
 	const dispatch = useDispatch();
 	const inputRef = useRef(null);
 
-	const [isInputActive, setIsInputActive] = useState(true);
+	const [isInputActive, setIsInputActive] = useState(false);
 	const [isFormFocused, setIsFormFocused] = useState(false);
 
 	const formStyleName = isFormFocused ? "form focused" : "form";
