@@ -1,14 +1,13 @@
+import { useState, useEffect, useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { changeLocation } from "Features/locationSlice";
-import { useState, useRef } from "react";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPen, faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import "./LocationSelector.scss";
-import { useEffect } from "react";
 
 function LocationSelector() {
-	const { status, error } = useSelector((state) => state.forecastData);
+	const { data, status, error } = useSelector((state) => state.forecastData);
 	const location = useSelector((state) => state.location.value);
 
 	const [isFormDisplayed, setIsFormDisplayed] = useState(false);
@@ -16,6 +15,11 @@ function LocationSelector() {
 
 	const dispatch = useDispatch();
 	const inputRef = useRef(null);
+
+	const addressArray = data.resolvedAddress.split(",");
+	const firstWord = addressArray.at(0).trim();
+	const lastWord = addressArray.at(-1).trim();
+	const shortAddress = firstWord + ", " + lastWord;
 
 	const formStyleName = isFormFocused ? "form focused" : "form";
 
@@ -26,7 +30,14 @@ function LocationSelector() {
 	}, [status]);
 
 	const handleSubmit = (event) => {
-		dispatch(changeLocation(inputRef.current.value));
+		const inputValue = inputRef.current.value;
+
+		if (inputValue === location) {
+			setIsFormDisplayed(false);
+		} else {
+			dispatch(changeLocation(inputValue));
+		}
+
 		event.preventDefault();
 	};
 
@@ -50,7 +61,7 @@ function LocationSelector() {
 			) : (
 				<>
 					<div styleName="locationName">
-						<p>{location}</p>
+						<p>{shortAddress}</p>
 					</div>
 
 					<div styleName="penIcon" onClick={() => setIsFormDisplayed(true)}>
