@@ -9,7 +9,7 @@ function App() {
 	const dispatch = useDispatch();
 	const unitGroup = useSelector((state) => state.unitGroup.value);
 	const location = useSelector((state) => state.location.value);
-	const { data, status } = useSelector((state) => state.forecastData);
+	const { data } = useSelector((state) => state.forecastData);
 
 	useEffect(() => {
 		dispatch(fetchForecastData({ unitGroup, location }));
@@ -17,7 +17,7 @@ function App() {
 
 	return (
 		<div styleName="app">
-			{status !== "failed" && data !== null && (
+			{data !== null && (
 				<div styleName="container">
 					<Overview />
 					<WeeklyNavigationBar />

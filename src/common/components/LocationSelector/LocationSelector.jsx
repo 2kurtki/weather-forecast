@@ -5,30 +5,34 @@ import { useState, useRef } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPen, faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import "./LocationSelector.scss";
+import { useEffect } from "react";
 
 function LocationSelector() {
+	const { status, error } = useSelector((state) => state.forecastData);
 	const location = useSelector((state) => state.location.value);
+
+	const [isFormDisplayed, setIsFormDisplayed] = useState(false);
+	const [isFormFocused, setIsFormFocused] = useState(false);
+
 	const dispatch = useDispatch();
 	const inputRef = useRef(null);
 
-	const [isInputActive, setIsInputActive] = useState(false);
-	const [isFormFocused, setIsFormFocused] = useState(false);
-
 	const formStyleName = isFormFocused ? "form focused" : "form";
+
+	useEffect(() => {
+		if (status === "succeeded") {
+			setIsFormDisplayed(false);
+		}
+	}, [status]);
 
 	const handleSubmit = (event) => {
 		dispatch(changeLocation(inputRef.current.value));
-		setIsInputActive(false);
 		event.preventDefault();
-	};
-
-	const handleClick = () => {
-		setIsInputActive(true);
 	};
 
 	return (
 		<div styleName="container">
-			{isInputActive ? (
+			{isFormDisplayed ? (
 				<form styleName={formStyleName} onSubmit={handleSubmit}>
 					<input
 						styleName="input"
@@ -49,11 +53,12 @@ function LocationSelector() {
 						<p>{location}</p>
 					</div>
 
-					<div styleName="penIcon" onClick={handleClick}>
+					<div styleName="penIcon" onClick={() => setIsFormDisplayed(true)}>
 						<FontAwesomeIcon icon={faPen} />
 					</div>
 				</>
 			)}
+			{error.name === "LocationError" && <div>This location doesnt exist!</div>}
 		</div>
 	);
 }

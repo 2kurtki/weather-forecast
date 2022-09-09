@@ -1,4 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { LocationError } from "./errors";
 
 export const fetchForecastData = createAsyncThunk(
 	"forecastData/fetchForecastData",
@@ -21,14 +22,27 @@ export const fetchForecastData = createAsyncThunk(
 		try {
 			const response = await fetch(url);
 
-			if (!response.ok) {
-				throw new Error(`HTTP error: The status is ${response.status}`);
+			if (response.ok) {
+				const data = await response.json();
+				return data;
 			}
 
-			const data = await response.json();
-			return data;
+			switch (response.status) {
+				case 400: {
+					const responseText = await response.text();
+
+					if (responseText.startsWith("Invalid location found")) {
+						throw new LocationError("Invalid location error");
+					} else {
+						throw new Error(`HTTP error: The status is ${response.status}`);
+					}
+				}
+				default: {
+					throw new Error(`HTTP error: The status is ${response.status}`);
+				}
+			}
 		} catch (err) {
-			return rejectWithValue(err.message);
+			return rejectWithValue({ name: err.name, message: err.message });
 		}
 	}
 );
@@ -38,13 +52,19 @@ const forecastDataSlice = createSlice({
 	initialState: {
 		data: null,
 		status: "idle",
-		error: null,
+		error: {
+			name: null,
+			message: null,
+		},
 	},
 	extraReducers: (builder) => {
 		builder
 			.addCase(fetchForecastData.pending, (state) => {
 				state.status = "loading";
-				state.error = null;
+				state.error = {
+					name: null,
+					message: null,
+				};
 			})
 			.addCase(fetchForecastData.fulfilled, (state, action) => {
 				state.status = "succeeded";
