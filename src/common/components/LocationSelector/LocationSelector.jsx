@@ -32,9 +32,9 @@ function LocationSelector() {
 	const handleSubmit = (event) => {
 		const inputValue = inputRef.current.value;
 
-		if (inputValue === location) {
+		if (inputValue === location && status === "succeeded") {
 			setIsFormDisplayed(false);
-		} else {
+		} else if (inputValue !== location) {
 			dispatch(changeLocation(inputValue));
 		}
 
@@ -69,7 +69,9 @@ function LocationSelector() {
 					</div>
 				</>
 			)}
-			{error.name === "LocationError" && <div>This location doesnt exist!</div>}
+			{error.name === "LocationError" && (
+				<div styleName="error">This location doesnt exist!</div>
+			)}
 		</div>
 	);
 }
