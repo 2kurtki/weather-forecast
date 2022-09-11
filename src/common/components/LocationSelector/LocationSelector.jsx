@@ -19,7 +19,7 @@ function LocationSelector() {
 	const addressArray = data.resolvedAddress.split(",");
 	const firstWord = addressArray.at(0).trim();
 	const lastWord = addressArray.at(-1).trim();
-	const shortAddress = firstWord + ", " + lastWord;
+	const shortAddress = addressArray.length === 1 ? firstWord : firstWord + ", " + lastWord;
 
 	const formStyleName = isFormFocused ? "form focused" : "form";
 
@@ -70,7 +70,9 @@ function LocationSelector() {
 				</>
 			)}
 			{error.name === "LocationError" && (
-				<div styleName="error">This location doesnt exist!</div>
+				<div styleName="error">
+					<p>Invalid location found</p>
+				</div>
 			)}
 		</div>
 	);
