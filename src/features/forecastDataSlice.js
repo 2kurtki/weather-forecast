@@ -12,7 +12,7 @@ export const fetchForecastData = createAsyncThunk(
 		const params = {
 			unitGroup: unitGroup,
 			iconSet: "icons2",
-			key: process.env.API_KEY,
+			key: process.env.WEATHER_API_KEY,
 		};
 
 		for (let prop in params) {

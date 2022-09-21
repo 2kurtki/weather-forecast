@@ -1,23 +1,30 @@
 import { Overview } from "../Overview";
 import { WeeklyNavigationBar } from "../WeekNavigation";
-import { fetchForecastData } from "Features/forecastDataSlice";
+import { fetchForecastData, fetchLocation } from "Features/";
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
 import "./App.scss";
 
 function App() {
 	const dispatch = useDispatch();
+	const forecastData = useSelector((state) => state.forecastData);
+	const location = useSelector((state) => state.location);
 	const unitGroup = useSelector((state) => state.unitGroup.value);
-	const location = useSelector((state) => state.location.value);
-	const { data } = useSelector((state) => state.forecastData);
 
 	useEffect(() => {
-		dispatch(fetchForecastData({ unitGroup, location }));
-	}, [unitGroup, location, dispatch]);
+		dispatch(fetchLocation());
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, []);
+
+	useEffect(() => {
+		if (location.status !== "idle" && location.status !== "loading") {
+			dispatch(fetchForecastData({ unitGroup, location: location.value }));
+		}
+	}, [location, unitGroup, dispatch]);
 
 	return (
 		<div styleName="app">
-			{data !== null && (
+			{forecastData.data !== null && (
 				<div styleName="container">
 					<Overview />
 					<WeeklyNavigationBar />
