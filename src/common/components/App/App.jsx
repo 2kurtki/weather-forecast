@@ -24,10 +24,14 @@ function App() {
 
 	return (
 		<div styleName="app">
-			{forecastData.data !== null && (
+			{forecastData.data !== null ? (
 				<div styleName="container">
 					<Overview />
 					<WeeklyNavigationBar />
+				</div>
+			) : (
+				<div styleName="wrapper">
+					<div styleName="spinner" />
 				</div>
 			)}
 		</div>
