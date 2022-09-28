@@ -29,6 +29,11 @@ function App() {
 					<Overview />
 					<WeeklyNavigationBar />
 				</div>
+			) : forecastData.status === "failed" ? (
+				<div styleName="wrapper">
+					<p styleName="error">The error occurred: {forecastData.error.name}</p>
+					<p styleName="error">Try reloading the page</p>
+				</div>
 			) : (
 				<div styleName="wrapper">
 					<div styleName="spinner" />
