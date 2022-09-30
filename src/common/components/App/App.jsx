@@ -18,7 +18,7 @@ function App() {
 
 	useEffect(() => {
 		if (location.status !== "idle" && location.status !== "loading") {
-			dispatch(fetchForecastData({ unitGroup, location: location.value }));
+			dispatch(fetchForecastData({ location: location.value, unitGroup }));
 		}
 	}, [location, unitGroup, dispatch]);
 
@@ -31,7 +31,7 @@ function App() {
 				</div>
 			) : forecastData.status === "failed" ? (
 				<div styleName="wrapper">
-					<p styleName="error">The error occurred: {forecastData.error.name}</p>
+					<p styleName="error">{forecastData.error.message}</p>
 					<p styleName="error">Try reloading the page</p>
 				</div>
 			) : (

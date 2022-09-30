@@ -3,7 +3,10 @@ import { LocationError } from "./errors";
 
 export const fetchForecastData = createAsyncThunk(
 	"forecastData/fetchForecastData",
-	async ({ unitGroup, location }, { rejectWithValue }) => {
+	async ({ location, unitGroup }, { rejectWithValue }) => {
+		const cachedData = sessionStorage.getItem(`${location} ${unitGroup}`);
+		if (cachedData !== null) return JSON.parse(cachedData);
+
 		const url = new URL(
 			`/VisualCrossingWebServices/rest/services/timeline/${location}`,
 			"https://weather.visualcrossing.com"
@@ -24,6 +27,15 @@ export const fetchForecastData = createAsyncThunk(
 
 			if (response.ok) {
 				const data = await response.json();
+
+				if (sessionStorage.length < 10) {
+					sessionStorage.setItem(`${location} ${unitGroup}`, JSON.stringify(data));
+				}
+
+				setTimeout(() => {
+					sessionStorage.removeItem(`${location} ${unitGroup}`);
+				}, 6e5);
+
 				return data;
 			}
 

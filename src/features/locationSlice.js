@@ -3,6 +3,9 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 export const fetchLocation = createAsyncThunk(
 	"locationSlice/fetchLocation",
 	async (_, { rejectWithValue }) => {
+		const cachedData = localStorage.getItem(`currentLocation`);
+		if (cachedData !== null) return cachedData;
+
 		const url = new URL(
 			`/v1/?api_key=${process.env.LOC_API_KEY}`,
 			"https://ipgeolocation.abstractapi.com"
@@ -16,6 +19,12 @@ export const fetchLocation = createAsyncThunk(
 			}
 
 			const data = await response.json();
+			localStorage.setItem(`currentLocation`, data.city);
+
+			setTimeout(() => {
+				localStorage.removeItem(`currentLocation`);
+			}, 6e8);
+
 			return data.city;
 		} catch (err) {
 			return rejectWithValue({ name: err.name, message: err.message });
