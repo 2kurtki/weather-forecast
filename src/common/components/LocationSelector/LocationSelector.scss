@@ -1,4 +1,5 @@
 @use "Styles/partials/colors" as *;
+@use "Styles/partials/buttons" as *;
 
 .container {
 	position: relative;
@@ -53,14 +54,7 @@
 	position: absolute;
 	margin-left: 10px;
 
-	font-size: 1.3rem;
-
-	cursor: pointer;
-	transition: 0.3s;
-
-	&:hover {
-		opacity: 0.6;
-	}
+	@include transitionButton($size: 1.3rem);
 }
 
 .locationName,

@@ -1,0 +1,9 @@
+@mixin transitionButton($size: 2rem) {
+	font-size: $size;
+	cursor: pointer;
+
+	&:hover {
+		opacity: 0.6;
+		transition: 0.3s;
+	}
+}

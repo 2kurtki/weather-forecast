@@ -1,8 +1,21 @@
+@use "Styles/partials/buttons" as *;
+
 .wrapper {
 	max-width: 100%;
 	display: flex;
 	justify-content: space-between;
+	align-items: center;
 
 	margin: 140px auto;
 	margin-bottom: 0;
+}
+
+.swipeButton {
+	margin: 0 12px;
+	@include transitionButton;
+
+	&.disabled {
+		visibility: hidden;
+		transition: none;
+	}
 }
