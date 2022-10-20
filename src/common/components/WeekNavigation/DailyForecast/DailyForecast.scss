@@ -1,11 +1,13 @@
+@use "Styles/partials" as *;
+
 .container {
 	display: flex;
 	flex-direction: column;
 
-	min-width: 215px;
+	min-width: 100px;
 	width: auto;
 
-	padding: 28px 20px;
+	padding: 10px 8px;
 	margin: 0 8px;
 
 	background: rgba(255, 255, 255, 0.04);
@@ -17,8 +19,18 @@
 	overflow: hidden;
 	transition: 1s;
 
-	&.selected {
-		padding: 28px 24px;
+	@include laptop {
+		min-width: 100px;
+	}
+
+	@include largeLaptop {
+		min-width: 148px;
+		padding: 18px 16px;
+	}
+
+	@include desktop {
+		min-width: 200px;
+		padding: 24px 16px;
 	}
 }
 
@@ -62,8 +74,8 @@
 }
 
 .iconWrapper {
-	width: 80px;
-	height: 80px;
+	width: 5rem;
+	height: 5rem;
 
 	display: flex;
 	flex-direction: column;
@@ -99,6 +111,6 @@
 	flex-direction: column;
 	justify-content: center;
 
-	font-size: 46px;
+	font-size: 3rem;
 	line-height: 1;
 }

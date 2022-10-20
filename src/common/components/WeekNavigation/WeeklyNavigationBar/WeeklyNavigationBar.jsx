@@ -1,50 +1,48 @@
-import { DailyForecast } from "../DailyForecast";
 import { useReducer } from "react";
 import { useSelector } from "react-redux";
+import { useMediaQuery } from "react-responsive";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleChevronLeft, faCircleChevronRight } from "@fortawesome/free-solid-svg-icons";
+import { DailyForecast } from "../DailyForecast";
 import "./WeeklyNavigationBar.scss";
 
-function reducer(weekDays, action) {
-	const firstDay = weekDays.at(0);
-	const lastDay = weekDays.at(-1);
+function reducer(swipePos, action) {
+	const maxSwipePos = action.maxSwipePos;
 
-	switch (action) {
+	switch (action.type) {
 		case "setPrevWeek":
-			return firstDay !== 0 ? weekDays.map((item) => item - weekDays.length) : weekDays;
+			return swipePos !== 0 ? swipePos - 1 : swipePos;
 		case "setNextWeek":
-			return lastDay + weekDays.length <= 14
-				? weekDays.map((item) => item + weekDays.length)
-				: weekDays;
+			return swipePos !== maxSwipePos ? swipePos + 1 : swipePos;
 	}
 }
 
 function WeeklyNavigationBar() {
 	const forecastData = useSelector((state) => state.forecastData.data);
-	const [weekDays, dispatch] = useReducer(reducer, [0, 1, 2, 3, 4]);
+	const isTablet = useMediaQuery({ query: "(max-width: 768px)" });
 
-	const dailyForecastList = weekDays.map((dayNum) => {
-		const dailyForecastData = forecastData.days[dayNum];
-		const dayId = dailyForecastData.datetime;
+	const [swipePos, dispatch] = useReducer(reducer, 0);
+	const dayRange = isTablet ? 4 : 5;
+	const maxSwipePos = Math.floor(forecastData.days.length / dayRange) - 1;
 
-		return <DailyForecast dailyForecastData={dailyForecastData} dayNum={dayNum} key={dayId} />;
+	const dailyForecastList = forecastData.days.map((data, dayNum) => {
+		return <DailyForecast dailyForecastData={data} dayNum={dayNum} key={data.datetime} />;
 	});
 
-	const isDisabledLeft = weekDays.at(0) !== 0 ? "" : " disabled";
-	const isDisabledRight = weekDays.at(-1) + weekDays.length <= 14 ? "" : " disabled";
-
 	return (
-		<div styleName="wrapper">
+		<div styleName="container">
 			<button
-				styleName={"swipeButton" + isDisabledLeft}
-				onClick={() => dispatch("setPrevWeek")}>
+				styleName={"swipeButton"}
+				onClick={() => dispatch({ type: "setPrevWeek", maxSwipePos: maxSwipePos })}>
 				<FontAwesomeIcon icon={faCircleChevronLeft} />
 			</button>
-			{dailyForecastList}
+			<div styleName="dailyForecastList">
+				{dailyForecastList.slice(dayRange * swipePos, dayRange * (swipePos + 1))}
+			</div>
 			<button
-				styleName={"swipeButton" + isDisabledRight}
-				onClick={() => dispatch("setNextWeek")}>
+				styleName={"swipeButton"}
+				onClick={() => dispatch({ type: "setNextWeek", maxSwipePos: maxSwipePos })}>
 				<FontAwesomeIcon icon={faCircleChevronRight} />
 			</button>
 		</div>

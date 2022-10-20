@@ -1,3 +1,5 @@
+@use "Styles/partials" as *;
+
 @mixin box-sizing($property) {
 	-webkit-box-sizing: $property;
 	-moz-box-sizing: $property;
@@ -6,8 +8,16 @@
 
 html {
 	font-weight: 500;
-	font-size: 16px;
+	font-size: 8px;
 	font-family: "Noto Sans", sans-serif;
+
+	@include largeLaptop {
+		font-size: 10px;
+	}
+
+	@include desktop {
+		font-size: 14px;
+	}
 }
 
 body {
