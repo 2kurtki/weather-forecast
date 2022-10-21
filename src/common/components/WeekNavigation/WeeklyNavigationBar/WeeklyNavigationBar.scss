@@ -2,16 +2,34 @@
 
 .container {
 	max-width: 100%;
+	margin-top: 24px;
+	margin-bottom: 6px;
+
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
 
-	margin: 140px auto;
+	@include breakpoint(400px) {
+		margin-top: 50px;
+		margin-bottom: 30px;
+	}
+
+	@include breakpoint(680px) {
+		margin: 120px auto;
+	}
+
+	@include laptop {
+		margin: 140px auto;
+	}
 }
 
 .swipeButton {
 	margin: auto 10px;
 	@include transitionButton;
+
+	@include tablet {
+		margin: auto 16px;
+	}
 
 	@include desktop {
 		margin: auto 20px;
@@ -25,6 +43,20 @@
 
 .dailyForecastList {
 	display: flex;
+	flex-flow: column wrap;
 	justify-content: space-between;
 	align-items: center;
+
+	min-width: 228px;
+	margin: 0 8px;
+
+	@include tablet {
+		min-width: 260px;
+	}
+
+	@include breakpoint(680px) {
+		flex-direction: row;
+		min-width: none;
+		margin: 0;
+	}
 }

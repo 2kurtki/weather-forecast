@@ -6,6 +6,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleChevronLeft, faCircleChevronRight } from "@fortawesome/free-solid-svg-icons";
 import { DailyForecast } from "../DailyForecast";
 import "./WeeklyNavigationBar.scss";
+import { useLayoutEffect } from "react";
 
 function reducer(swipePos, action) {
 	const maxSwipePos = action.maxSwipePos;
@@ -15,20 +16,29 @@ function reducer(swipePos, action) {
 			return swipePos !== 0 ? swipePos - 1 : swipePos;
 		case "setNextWeek":
 			return swipePos !== maxSwipePos ? swipePos + 1 : swipePos;
+		case "resetSwipePos":
+			return 0;
 	}
 }
 
 function WeeklyNavigationBar() {
 	const forecastData = useSelector((state) => state.forecastData.data);
-	const isTablet = useMediaQuery({ query: "(max-width: 768px)" });
+	const isLaptop = useMediaQuery({ query: "(min-width: 768px)" });
 
 	const [swipePos, dispatch] = useReducer(reducer, 0);
-	const dayRange = isTablet ? 4 : 5;
+	const dayRange = isLaptop ? 5 : 4;
 	const maxSwipePos = Math.floor(forecastData.days.length / dayRange) - 1;
 
 	const dailyForecastList = forecastData.days.map((data, dayNum) => {
 		return <DailyForecast dailyForecastData={data} dayNum={dayNum} key={data.datetime} />;
 	});
+
+	useLayoutEffect(() => {
+		if (swipePos > maxSwipePos) {
+			dispatch({ type: "resetSwipePos" });
+		}
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [maxSwipePos]);
 
 	return (
 		<div styleName="container">

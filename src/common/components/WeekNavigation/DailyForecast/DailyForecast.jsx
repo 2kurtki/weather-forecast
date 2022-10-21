@@ -2,6 +2,7 @@ import { DateDisplay } from "../DateDisplay";
 import { WeatherIcon } from "../../WeatherIcon";
 import { useSelector, useDispatch } from "react-redux";
 import { changeDay } from "Features/selectedDaySlice";
+import { useMediaQuery } from "react-responsive";
 import "./DailyForecast.scss";
 
 function DailyForecast({ dailyForecastData, dayNum }) {
@@ -11,13 +12,17 @@ function DailyForecast({ dailyForecastData, dayNum }) {
 	const selectedDayNum = useSelector((state) => state.selectedDay.number);
 	const isDaySelected = dayNum === selectedDayNum;
 
-	const dayStyleStatus = isDaySelected ? " selected" : "";
+	const isTabletOrSmaller = useMediaQuery({ query: "(max-width: 680px)" });
+	const dayStyleStatus = isDaySelected || isTabletOrSmaller ? " selected" : "";
 
 	return (
 		<div styleName={"container" + dayStyleStatus} onClick={() => dispatch(changeDay(dayNum))}>
 			<div styleName="title">
 				<div styleName={"date" + dayStyleStatus}>
-					<DateDisplay datetime={datetime} showDateNumber={isDaySelected} />
+					<DateDisplay
+						datetime={datetime}
+						showDateNumber={isDaySelected || isTabletOrSmaller}
+					/>
 				</div>
 
 				<div styleName={"conditions" + dayStyleStatus}>

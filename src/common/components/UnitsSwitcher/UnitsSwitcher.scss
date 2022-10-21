@@ -1,11 +1,21 @@
+@use "Styles/partials" as *;
+
 .container {
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
 
-	font-size: 32px;
+	font-size: 22px;
 	line-height: 1;
-	margin: 10px 0;
+	margin: 4px 0;
+
+	@include tablet {
+		margin: 8px 0;
+	}
+
+	@include laptop {
+		font-size: 32px;
+	}
 }
 
 .disabled {
