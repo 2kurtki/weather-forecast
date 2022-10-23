@@ -36,8 +36,10 @@
 	}
 
 	&.disabled {
-		visibility: hidden;
-		transition: none;
+		cursor: not-allowed;
+		&:hover {
+			opacity: 1;
+		}
 	}
 }
 
